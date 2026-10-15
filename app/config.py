@@ -1,0 +1,6 @@
+"""Central application defaults."""
+APP_TITLE = "Northstar Desktop"
+WINDOW_GEOMETRY = "1180x760"
+MIN_WINDOW_SIZE = (760, 560)
+SIDEBAR_EXPANDED_WIDTH = 218
+SIDEBAR_COMPACT_WIDTH = 72

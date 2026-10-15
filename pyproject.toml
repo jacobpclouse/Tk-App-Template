@@ -1,0 +1,9 @@
+[project]
+name = "tk-app-template"
+version = "0.1.0"
+description = "A reusable, themed Tkinter desktop application starter."
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
