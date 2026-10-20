@@ -46,6 +46,14 @@ class AppShell:
         build_menu(root, theme, {"navigate": self.navigate})
         self.root.bind("<Configure>", self._on_resize)
         self.navigate("dashboard")
+        self.theme.register(self.refresh_theme)
+
+    def refresh_theme(self):
+        background = self.theme.color("background")
+        self.container.configure(bg=background)
+        self.main.configure(bg=background)
+        self.content.configure(bg=background)
+        self.panes.configure(bg=self.theme.color("border"))
 
     def toggle_sidebar(self):
         self.sidebar_collapsed = not self.sidebar_collapsed

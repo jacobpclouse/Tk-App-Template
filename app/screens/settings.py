@@ -23,17 +23,19 @@ class SettingsScreen(tk.Frame):
         SecondaryButton(row, "Use dark", command=lambda: self._set("dark")).pack(side="left")
         ttk.Separator(card.body).pack(fill="x", pady=18)
         ttk.Label(card.body, text="Brand colors", style="CardTitle.TLabel").pack(anchor="w", pady=(0, 10))
-        swatches = tk.Frame(card.body, bg=theme.color("surface"))
-        swatches.pack(fill="x")
+        self.swatches_frame = tk.Frame(card.body, bg=theme.color("surface"))
+        self.swatches_frame.pack(fill="x")
+        self.swatch_cells = {}
         self.swatches = {}
         for token in ("background", "surface", "surface_alt", "accent", "selection", "border"):
-            cell = tk.Frame(swatches, bg=theme.color("surface"))
+            cell = tk.Frame(self.swatches_frame, bg=theme.color("surface"))
             cell.pack(side="left", padx=(0, 12))
             swatch = tk.Frame(cell, width=58, height=34, bg=theme.color(token),
                               highlightthickness=1, highlightbackground=theme.color("border"))
             swatch.pack()
             swatch.pack_propagate(False)
             ttk.Label(cell, text=token, style="SurfaceMuted.TLabel").pack(anchor="w", pady=(5, 0))
+            self.swatch_cells[token] = cell
             self.swatches[token] = swatch
         theme.register(self.refresh)
         self.bind("<Destroy>", self._on_destroy, add="+")
@@ -49,6 +51,10 @@ class SettingsScreen(tk.Frame):
     def refresh(self):
         self.configure(bg=self.theme.color("background"))
         self.theme_value.set(self.theme.mode.title())
+        surface = self.theme.color("surface")
+        self.swatches_frame.configure(bg=surface)
+        for cell in self.swatch_cells.values():
+            cell.configure(bg=surface)
         for token, swatch in self.swatches.items():
             try:
                 swatch.configure(bg=self.theme.color(token),

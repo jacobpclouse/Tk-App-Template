@@ -4,6 +4,7 @@ from tkinter import ttk
 PALETTES = {
     "light": {
         "background": "#F1F5F2",
+                # "background": "#02FAFA",
         "surface": "#FFFFFF",
         "surface_alt": "#E6EEE9",
         "border": "#D1DDD6",

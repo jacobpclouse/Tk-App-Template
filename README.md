@@ -38,12 +38,6 @@ From this directory:
 python run.py
 ```
 
-Open the component gallery example:
-
-```bash
-python examples/component_gallery.py
-```
-
 Run the tests:
 
 ```bash
@@ -72,7 +66,6 @@ tk-app-template/
 │   ├── styles.py
 │   └── theme.py
 ├── docs/
-├── examples/
 ├── tests/
 ├── run.py
 └── README.md
